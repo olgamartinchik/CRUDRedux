@@ -2,6 +2,7 @@ import styled, {keyframes} from 'styled-components'
 
 export const SApp = styled.div`
   text-align: center;
+  padding: 20px 15px;
 `
 
 export const SHeader = styled.header`
