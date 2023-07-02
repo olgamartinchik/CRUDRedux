@@ -1,5 +1,5 @@
 import React, { memo, FC } from 'react';
-import { CardContainer, Img, CardSubtitle, CardTitle } from '../../../assets/styles/card.styles';
+import { CardContainer, Img, CardSubtitle, CardTitle, CardText, FlexContent, AboutContent } from '../../../assets/styles/card.styles';
 import { ProductModel } from '../../../models/product.model';
 
 type ProductCardProps = ProductModel;
@@ -12,14 +12,16 @@ const ProductCard: FC<ProductCardProps> = ({ id,
     }) => {
     return (
         <CardContainer>
-            <div>
+            <FlexContent>
                 <Img src={image} alt=''/>
-            </div>
-            <div>
+            </FlexContent>
+            <AboutContent>
                 <CardTitle>{title}</CardTitle>
-                <p>{description}</p>
-            </div>
-            <CardSubtitle>{price}$</CardSubtitle>
+                <CardText>{description}</CardText>
+            </AboutContent>
+            <FlexContent>
+                <CardSubtitle>{price}$</CardSubtitle>
+            </FlexContent>
         </CardContainer>
     );
 };
