@@ -14,4 +14,10 @@ export default createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   }
+  ul{
+    margin: 0;
+  }
+  li {
+  list-style-type:  none;
+}
 `
