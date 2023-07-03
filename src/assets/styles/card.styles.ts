@@ -5,7 +5,7 @@ export const CardContainer = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     gap: 15px;
-    padding: 15px 20px;
+    padding: 20px;
     background-color: ${baseTheme.colors.cardbg};
     max-width: 450px;
     /* height: 220px; */
@@ -21,6 +21,7 @@ export const Img = styled.img`
 export const CardTitle = styled.h4`
     font-weight: bold;
     font-size: 18px;
+    margin-top: 0;
 `;
 export const CardText = styled.p`
     font-size: 16px;
@@ -30,6 +31,7 @@ export const CardSubtitle = styled.h5`
     font-weight: bold;
     font-size: 20px;
     white-space: nowrap;
+    margin-top: 0;
 `;
 export const AboutContent = styled.div`
     /* margin: 0;

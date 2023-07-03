@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react';
+import { FC, memo, useCallback, useState, useMemo } from 'react';
 import { Button } from '@mui/material';
 import { CardText } from '../../../assets/styles/card.styles';
 import { MAX_LENGTH } from '../../../constants/props.constants';
@@ -9,16 +9,23 @@ type DescriptionProps = {
     maxLength?: number;
 };
 
-const Description: FC<DescriptionProps> = ({ text, maxLength = MAX_LENGTH }) => {
+const Description: FC<DescriptionProps> = ({ text, maxLength }) => {
     const [isShow, setIsShow] = useState(false);
+
+    const showDescription = useCallback(() => {
+        setIsShow(!isShow);
+    }, [isShow]);
+
+    const description = useMemo(() => {
+        return maxLength! > MAX_LENGTH && !isShow ? text.split('').splice(0, MAX_LENGTH).join('') + '...' : text;
+    }, [isShow, maxLength, text]);
+
     return (
         <>
-            <CardText>
-                {maxLength > MAX_LENGTH && !isShow ? text.split('').splice(0, MAX_LENGTH).join('') + '...' : text}
-            </CardText>
-            {maxLength >= MAX_LENGTH && (
-                <Button variant={OUTLINED} onClick={() => setIsShow(!isShow)}>
-                    {isShow ? 'Hide' : 'Show Details'}
+            <CardText>{description!}</CardText>
+            {maxLength! >= MAX_LENGTH && (
+                <Button variant={OUTLINED} onClick={showDescription}>
+                    {isShow ? 'Hide Details' : 'Show Details'}
                 </Button>
             )}
         </>
