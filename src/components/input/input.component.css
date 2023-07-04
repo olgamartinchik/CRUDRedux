@@ -1,0 +1,15 @@
+.inputText,
+.inputDescription {
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+.inputText:focus {
+    outline: 1px solid #7986cb;
+}
+.inputDescription:focus {
+    outline: 1px solid #4caf50;
+}

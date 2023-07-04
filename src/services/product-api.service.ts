@@ -16,3 +16,6 @@ export async function fetchProductsApi(): Promise<AxiosResponse<ProductModel[]>>
 
     return productData;
 }
+export async function createProductApi(product: Partial<ProductModel>) {
+    return product;
+}

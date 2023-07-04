@@ -28,8 +28,6 @@ function useProducts(): UseProductsType {
                 // setProducts(cardData.data)
 
                 dispatch(setProductsAction(productData.data));
-
-                // console.log('product', products)
             } catch (error: unknown) {
                 setError(`Something went wrong! Error: ${error as Error}`);
             } finally {

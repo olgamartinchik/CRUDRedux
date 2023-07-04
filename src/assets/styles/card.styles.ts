@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { baseTheme } from './theme.styles';
-export const CardContainer = styled.div`
+
+export const CardContainer = styled.li`
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -8,11 +9,15 @@ export const CardContainer = styled.div`
     padding: 20px;
     background-color: ${baseTheme.colors.cardbg};
     max-width: 450px;
+    width: 100%;
     /* height: 220px; */
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: 0.5s ease-in-out;
+    @media ${baseTheme.media.middle} {
+        flex-wrap: wrap;
+    }
 `;
 export const Img = styled.img`
     width: 120px;
@@ -32,6 +37,7 @@ export const CardSubtitle = styled.h5`
     font-size: 20px;
     white-space: nowrap;
     margin-top: 0;
+    color: ${baseTheme.colors.primary};
 `;
 export const AboutContent = styled.div`
     /* margin: 0;
@@ -44,5 +50,5 @@ export const FlexContent = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
-    height: 100%;
+    justify-content: center;
 `;

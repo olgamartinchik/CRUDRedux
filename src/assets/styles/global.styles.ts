@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
+import { baseTheme } from './theme.styles';
 
 export default createGlobalStyle`
   body {
@@ -8,6 +9,7 @@ export default createGlobalStyle`
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color:  ${baseTheme.colors.font};
   }
 
   code {
@@ -16,8 +18,9 @@ export default createGlobalStyle`
   }
   ul{
     margin: 0;
+    padding-left: 0;
   }
   li {
   list-style-type:  none;
 }
-`
+`;

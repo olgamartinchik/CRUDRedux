@@ -1,4 +1,4 @@
-import React, { memo, FC } from 'react';
+import { memo, FC } from 'react';
 import {
     CardContainer,
     Img,
@@ -16,7 +16,7 @@ const ProductCard: FC<ProductCardProps> = ({ id, title, price, description, imag
     return (
         <CardContainer>
             <FlexContent>
-                <Img src={image} alt='' />
+                <Img src={image ?? 'https://beepeers.com/assets/images/commerces/default-image.jpg'} alt='' />
                 {/* {description.length} */}
             </FlexContent>
             <AboutContent>
@@ -24,7 +24,7 @@ const ProductCard: FC<ProductCardProps> = ({ id, title, price, description, imag
                 <Description text={description} maxLength={description.length} />
             </AboutContent>
             <FlexContent>
-                <CardSubtitle>{price}$</CardSubtitle>
+                <CardSubtitle>{price ?? 0}$</CardSubtitle>
             </FlexContent>
         </CardContainer>
     );
