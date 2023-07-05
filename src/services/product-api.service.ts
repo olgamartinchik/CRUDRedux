@@ -1,17 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { PRODUCTS_URL } from '../constants/api.constants';
 import { ProductModel } from '../models/product.model';
-import { createProductAction } from '../store/product/product.slice';
+// import { createProductAction } from '../store/product/product.slice';
 
-export const fetchProductsApi = createAsyncThunk<ProductModel[]>('products/fetch', async () => {
-    const productData = await axios.get(PRODUCTS_URL);
-    return productData.data;
-});
-
-export const createProductApi = createAsyncThunk(
-    'products/createProduct',
-    async (product: Partial<ProductModel>, { dispatch }) => {
-        dispatch(createProductAction(product as ProductModel));
+export const fetchProductsApi = async (): Promise<ProductModel[] | unknown> => {
+    try {
+        const productData = await axios.get(PRODUCTS_URL);
+        return productData.data as ProductModel[];
+    } catch (e: unknown) {
+        return (e as Error).message;
     }
-);
+};

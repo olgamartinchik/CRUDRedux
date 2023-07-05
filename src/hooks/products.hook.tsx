@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { ProductModel } from '../models/product.model';
-
-import { fetchProductsApi } from '../services/product-api.service';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store/store';
+import { selectLoadingError, selectProducts } from '../models/state/products/product.selectors';
+import { fetchProducts } from '../store/actions';
 
 type UseProductsType = {
     products: ProductModel[];
@@ -12,12 +11,13 @@ type UseProductsType = {
 };
 function useProducts(): UseProductsType {
     const dispatch = useDispatch();
-    const products = useSelector((state: RootState) => state.product);
+    const products = useSelector(selectProducts);
+    const errorLoading = useSelector(selectLoadingError);
 
     useEffect(() => {
-        dispatch(fetchProductsApi() as any);
+        dispatch(fetchProducts() as any);
     }, [dispatch]);
 
-    return { ...products };
+    return { products, ...errorLoading };
 }
 export default useProducts;

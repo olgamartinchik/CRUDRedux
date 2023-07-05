@@ -6,7 +6,8 @@ import CreateButton from '../../button/create-btn.component';
 import { ProductModel } from '../../../models/product.model';
 import { useDispatch } from 'react-redux';
 import useModal from '../../../hooks/modal.hook';
-import { createProductApi } from '../../../services/product-api.service';
+import { createProduct } from '../../../store/actions';
+// import { createProductApi } from '../../../services/product-api.service';
 
 const ProductCreationContainer = () => {
     // const [visibleModal, setVisibleModal] = useState(false);
@@ -24,7 +25,7 @@ const ProductCreationContainer = () => {
     const handleSubmit = useCallback(
         (product: Partial<ProductModel>) => {
             // dispatch(createProductAction(product as ProductModel));
-            dispatch(createProductApi(product) as any);
+            dispatch(createProduct(product) as any);
             // setVisibleModal(false);
             onToggleModal();
         },

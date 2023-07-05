@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { ProductState } from '../../models/state/product-state.model';
 import { ProductModel } from '../../models/product.model';
-import { createProductApi, fetchProductsApi } from '../../services/product-api.service';
+import { createProduct, fetchProducts } from '../actions';
 
 const initialState: ProductState = {
     products: [],
@@ -22,26 +22,26 @@ export const productSlice = createSlice({
         },
     },
     extraReducers: builder => {
-        builder.addCase(fetchProductsApi.pending, state => {
+        builder.addCase(fetchProducts.pending, state => {
             state.loading = true;
             state.error = null;
         });
-        builder.addCase(fetchProductsApi.fulfilled, (state, action) => {
+        builder.addCase(fetchProducts.fulfilled, (state, action) => {
             state.loading = false;
-            state.products = action.payload;
+            state.products = action.payload as any;
         });
-        builder.addCase(fetchProductsApi.rejected, (state, action) => {
+        builder.addCase(fetchProducts.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message;
         });
-        builder.addCase(createProductApi.pending, state => {
+        builder.addCase(createProduct.pending, state => {
             state.loading = true;
             state.error = null;
         });
-        builder.addCase(createProductApi.fulfilled, state => {
+        builder.addCase(createProduct.fulfilled, state => {
             state.loading = false;
         });
-        builder.addCase(createProductApi.rejected, (state, action) => {
+        builder.addCase(createProduct.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message;
         });

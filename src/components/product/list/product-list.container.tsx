@@ -12,11 +12,10 @@ const ProductListContainer = () => {
     const { visibleModal, onToggleModal } = useModal();
     const title = 'Something went wrong!';
     useEffect(() => {
-        // console.log(error);
         if (error) {
             onToggleModal();
         }
-    }, [error]);
+    }, [error, onToggleModal]);
     return (
         <ProductContainer>
             {loading && <CircularProgress />}
