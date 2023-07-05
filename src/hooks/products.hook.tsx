@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { ProductModel } from '../models/product.model';
-// import { selectProducts } from '../models/state/products/product.selectors';
+
 import { fetchProductsApi } from '../services/product-api.service';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';

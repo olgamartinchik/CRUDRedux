@@ -5,8 +5,6 @@ import ProductCreationForm from '../../form/create-form.component';
 import CreateButton from '../../button/create-btn.component';
 import { ProductModel } from '../../../models/product.model';
 import { useDispatch } from 'react-redux';
-// import { RootState } from '../../../store/store';
-import { createProductAction } from '../../../store/product/product.slice';
 import useModal from '../../../hooks/modal.hook';
 import { createProductApi } from '../../../services/product-api.service';
 
