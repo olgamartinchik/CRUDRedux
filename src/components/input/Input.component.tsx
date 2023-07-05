@@ -1,5 +1,5 @@
 import './input.component.css';
-import { ChangeEvent, FC, InputHTMLAttributes, memo, useState } from 'react';
+import { ChangeEvent, FC, InputHTMLAttributes, memo, useCallback, useState } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     innerClassName?: string;
@@ -7,10 +7,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input: FC<InputProps> = ({ innerClassName, ...rest }) => {
     const [innerValue, setInnerValue] = useState('');
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         setInnerValue(event.target.value);
         // console.log(innerValue);
-    };
+    }, []);
 
     return <input value={innerValue} onChange={handleChange} className={innerClassName} {...rest} />;
 };

@@ -18,7 +18,7 @@ const ProductCreationForm: FC<ProductCreationFormProps> = ({ onSubmit }) => {
     const handleSubmit = useCallback(
         (e: FormEvent) => {
             e.preventDefault();
-            if (!title) {
+            if (!title.trim()) {
                 setError('Title is required');
 
                 return;
@@ -35,6 +35,7 @@ const ProductCreationForm: FC<ProductCreationFormProps> = ({ onSubmit }) => {
         },
         [title, description, onSubmit]
     );
+
     return (
         <Form onSubmit={handleSubmit}>
             <InputContainer>
@@ -47,7 +48,7 @@ const ProductCreationForm: FC<ProductCreationFormProps> = ({ onSubmit }) => {
                     placeholder={TITLE}
                     onChange={e => {
                         setTitle(e.target.value);
-                        if (title) {
+                        if (title.trim()) {
                             setError('');
                         }
                     }}

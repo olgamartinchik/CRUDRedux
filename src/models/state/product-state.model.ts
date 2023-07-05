@@ -1,5 +1,7 @@
-import { ProductModel } from "../product.model";
+import { ProductModel } from '../product.model';
 
 export interface ProductState {
-    products: ProductModel[] 
+    products: ProductModel[];
+    loading?: boolean;
+    error?: string | null;
 }
